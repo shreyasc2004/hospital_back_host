@@ -19,7 +19,7 @@ function initializeDatabase() {
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
                 age INTEGER,
-                gender TEXT CHECK(gender IN ('M', 'F', 'Other')),
+                gender TEXT CHECK(gender IN ('male', 'female', 'Other')),
                 address TEXT,
                 doctor TEXT,
                 date TEXT,
