@@ -19,8 +19,14 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      - name: Install dependencies from source
+        run: npm install --build-from-source --legacy-peer-deps
+
+      - name: Rebuild sqlite3
+        run: npm rebuild sqlite3
 
       - name: Make Jest executable (fix permissions)
         run: chmod +x ./node_modules/.bin/jest
