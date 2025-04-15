@@ -109,8 +109,15 @@ app.post('/getappointment', async (req, res) => {
     }
 });
 
-app.listen(PORT, async () => {
-    const dbStatus = await checkSQLiteConnection();
-    console.log(`SQLite Status: ${dbStatus}`);
-    console.log(`Server running on http://localhost:${PORT}`);
+if (require.main === module){
+    app.listen(PORT, async () => {
+        const dbStatus = await checkSQLiteConnection();
+        console.log(`SQLite Status: ${dbStatus}`);
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the Hospital Backend API');
 });
+module.exports=app;
